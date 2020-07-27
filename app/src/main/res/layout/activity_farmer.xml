@@ -10,7 +10,7 @@
         android:background="@color/colorPrimaryDark">
 
         <ImageView
-            android:id="@+id/imageView_back_aggregators"
+            android:id="@+id/imageView_back_farmers"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="20dp"
@@ -24,7 +24,7 @@
             android:text="Farmers"
             android:textColor="@color/colorWhite" />
         <ImageView
-            android:id="@+id/imageView_searchAggregator"
+            android:id="@+id/imageView_searchFarmer"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="20dp"
@@ -33,10 +33,10 @@
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview_update_inventory"
+        android:id="@+id/recyclerview_farmer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="20dp">
+        android:layout_margin="5dp">
     </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

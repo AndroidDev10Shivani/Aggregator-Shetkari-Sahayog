@@ -6,6 +6,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.sample.shetkarisahayogaggregator.DashboardActivity;
 import com.sample.shetkarisahayogaggregator.R;
 
 public class MyDealsActivity extends AppCompatActivity {
@@ -17,7 +18,7 @@ public class MyDealsActivity extends AppCompatActivity {
         findViewById(R.id.imageView_back_deals).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), TransportPaymentActivity.class));
+                startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
             }
         });
     }
