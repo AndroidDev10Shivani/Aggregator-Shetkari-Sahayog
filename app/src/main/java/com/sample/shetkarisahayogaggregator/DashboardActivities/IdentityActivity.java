@@ -35,7 +35,7 @@ public class IdentityActivity extends AppCompatActivity {
         textDemandingCrops = findViewById(R.id.textView_profileDemandingCrops);
 
         textName.setText(getIntent().getStringExtra("name"));
-        textAppId.setText(getIntent().getStringExtra("applicationID"));
+        textAppId.setText(""+getIntent().getLongExtra("applicationID",0));
         textMobileNo.setText(getIntent().getStringExtra("mobileNumber"));
         textGender.setText(getIntent().getStringExtra("gender"));
         textDob.setText(getIntent().getStringExtra("dob"));

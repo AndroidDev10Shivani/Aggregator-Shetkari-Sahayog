@@ -3,6 +3,7 @@ package com.sample.shetkarisahayogaggregator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,7 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.concurrent.TimeUnit;
 
 public class LoginActivity extends AppCompatActivity {
-    TextInputLayout registeredMobileNumber, verifyOTP;
+    EditText registeredMobileNumber, verifyOTP;
     String verificationCodeBySystem, mobileNumber, name;
     long applicationID;
 
@@ -46,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private Boolean validateMobileNumber() {
-        String val = registeredMobileNumber.getEditText().getText().toString();
+        String val = registeredMobileNumber.getText().toString();
         String pattern = "(0/91)?[7-9][0-9]{9}";
         if (val.isEmpty()) {
             registeredMobileNumber.setError("Field cannot be empty");
@@ -56,7 +57,6 @@ public class LoginActivity extends AppCompatActivity {
             return false;
         } else {
             registeredMobileNumber.setError(null);
-            registeredMobileNumber.setErrorEnabled(false);
             return true;
         }
     }
@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void isUser() {
-        mobileNumber = registeredMobileNumber.getEditText().getText().toString().trim();
+        mobileNumber = registeredMobileNumber.getText().toString().trim();
 
         Query checkUser = FirebaseDatabase.getInstance().getReference("Aggregator").orderByChild("mobileNumber").equalTo(mobileNumber);
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -78,7 +78,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     registeredMobileNumber.setError(null);
-                    registeredMobileNumber.setErrorEnabled(false);
 
                     String mobileNumberFromDB = dataSnapshot.child(mobileNumber).child("mobileNumber").getValue(String.class);
 
@@ -163,17 +162,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void buttonLogIn(View view) {
-       /* String code = verifyOTP.getEditText().getText().toString();
+       String code = verifyOTP.getText().toString();
         if (code.isEmpty() || code.length() < 6) {
             verifyOTP.setError("Wrong OTP...");
             verifyOTP.requestFocus();
             return;
         }
-        verifyCode(code);*/
-        Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
-        intent.putExtra("mobileNumber", "9021340413");
-        intent.putExtra("name", "Mohini Deorukhakar");
-        intent.putExtra("applicationID", "12356655555");
-        startActivity(intent);
+        verifyCode(code);
     }
 }
